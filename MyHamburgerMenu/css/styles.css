@@ -1,0 +1,165 @@
+body {
+    margin: 0;
+    font-family: Verdana, sans-serif;
+}
+
+header {
+    display: flex;
+    padding: 0 16px;
+}
+
+/* ロゴ部分 */
+header h1 {
+    margin: 0;
+    font-size: 22px;
+    line-height: 64px;
+}
+
+
+/* ハンバーガーアイコン */
+.sp-menu {
+    margin-left: auto;
+}
+
+.sp-menu #open {
+    font-size: 32px;
+    line-height: 64px;
+    cursor: pointer;
+}
+
+/* メニューを押したときにメニューアイコンを消す */
+.sp-menu #open.hide {
+    display: none;
+}
+
+main {
+    padding: 0 16px;
+}
+
+/* メニュー押したあとの白い透明部分 */
+.overlay {
+    /* 固定表示する */
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    background: rgba(255, 255, 255, 0.95);
+    /* メニューを真ん中に */
+    text-align: center;
+    padding: 64px;
+    /* オーバーレイは最初非表示のため透明にする */
+    opacity: 0;
+    /* ポインターカーソルを無効して要素を選択できるように */
+    pointer-events: none;
+    transition: opacity .4s;
+}
+
+/* 透明でなくする */
+.overlay.show {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+/* メニューボタンを押したあとのXマーク */
+.overlay #close {
+    /* 位置を固定にする 絶対配置 */
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    font-size: 32px;
+    cursor: pointer;
+}
+
+.overlay ul {
+    /* 先頭の黒丸を取り除く */
+    list-style-type: none;
+    /* margin padding をリセットする */
+    margin: 0;
+    padding: 0;
+}
+
+.overlay li {
+    margin-top: 24px;
+    /* 最初は非表示にしたいため 0に設定 */
+    opacity: 0;
+    /* 下から出現させるため、16px下に配置する */
+    transform: translateY(16px);
+    /* opacityとtransformに対して0.3秒ぐらいでアニメーションさせてね */
+    transition: opacity .3s, transform .3s;
+}
+
+/* showクラスが付与されたら表示させる */
+.overlay.show li {
+    /* 表示させる */
+    opacity: 1;
+    /* 下から上に移動する */
+    transform: none;
+}
+
+/* menuの1番目は1秒後に表示 */
+.overlay.show li:nth-child(1) {
+    transition-delay: .1s;
+}
+
+/* menuの2番目は2秒後に表示 */
+.overlay.show li:nth-child(2) {
+    transition-delay: .2s;
+}
+
+/* menuの3番目は3秒後に表示 */
+.overlay.show li:nth-child(3) {
+    transition-delay: .3s;
+}
+
+
+
+
+
+.pc-menu {
+    display: none;
+}
+
+
+/* ＜PC表示＞  ブラウザ幅が600px以上のとき */
+@media (min-width: 600px) {
+    /* pcメニューを表示させる */
+    .pc-menu {
+        display: block;
+        margin-left: auto;
+    }
+
+    /* 横並びに設定する */
+    .pc-menu ul {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        display: flex;
+    }
+
+    .pc-menu a {
+        /* widthを設定するためにdisplay:blockにする */
+        display: block;
+        width: 80px;
+        /* ロゴの高さと合わせる */
+        line-height: 64px;
+        text-align: center;
+    }
+
+    /* pcメニューをホバーさせると灰色にする */
+    .pc-menu a:hover {
+        background: #f2f2f2;
+    }
+
+    /* spメニューを非表示にする */
+    .sp-menu {
+        display: none;
+    }
+}
+
+
+
+
+
+
+

@@ -1,0 +1,60 @@
+body {
+    font-style: 14px;
+}
+
+/* idがopen と idがclose の要素に適用 */
+#open, #close {
+    cursor: pointer;
+    width: 200px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    text-align: center;
+    padding: 12px 0;
+    margin: 16px auto 0;
+}
+
+#mask {
+    /* マスクの色指定 */
+    background: rgba(0, 0, 0, 0.4);
+    /* マスクの位置の指定 以下設定で全画面設定できる */
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    /* マスクの重なりをモーダルの下に設定する */
+    z-index: 1;
+}
+
+#modal {
+    background: #FFF;
+    width: 300px;
+    padding: 20px;
+    border-radius: 4px;
+    position: absolute;
+    top: 40px;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    /* トランスフォームが変化するとき0.4秒かける */
+    transition: transform 0.4s;
+    /* モーダルの重なりを一番上に設定する */
+    z-index: 2;
+}
+
+/* idがmodalの子要素pに対して適用 */
+#modal > p {
+    margin: 0 0 20px;
+}
+
+/* idがmask かつ クラスがhidden の要素を指定 */
+#mask.hidden {
+    display: none;
+}
+
+/* idがmodal かつ hidden の要素を指定 */
+#modal.hidden {
+    /* モーダルを上に隠す */
+    transform: translate(0, -500px);
+}
+
