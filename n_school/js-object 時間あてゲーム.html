@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+<h1 id="display-area"></h1>
+
+
+<script>
+
+let game = {
+    // プロパティ
+    startTime: null,
+    displayArea: document.getElementById('display-area'),
+
+    // startメソッド
+    start: function() {
+        // 現在の時刻のミリ秒を代入
+        game.startTime = Date.now();     // 1621776121467
+
+        // なにかのキーが押されたら、メッセージを表示する  ※stop()としてしまうと、キーが押される前に即座にstop関数が実行されてしまう
+        document.body.onkeydown = game.s
+        top;
+    },
+
+    // stopメソッド
+    stop: function () {
+        // 現在の時間
+        let currentTime = Date.now();
+
+        // 現在の時間からスタートした時間の差を代入
+        let seconds = (currentTime - game.startTime) / 1000;
+
+        // 9.5秒から10.5秒の間ならすごい
+        if (9.5 <= seconds && seconds <= 10.5) {
+            game.displayArea.innerText = seconds + '秒でした。すごい';
+        } else {
+            game.displayArea.innerText = seconds + '秒でした。残念。';
+        }
+    },
+
+};
+
+// ゲームの実行確認
+if (confirm('OKを押して10秒だとおもったらなにかキーを押してください')) {
+    // ゲームの実行
+    game.start();
+}
+
+
+
+
+</script>
+
+</body>
+</html>
